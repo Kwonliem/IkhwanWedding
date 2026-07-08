@@ -1,0 +1,385 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fffbfc;
+    color: #4a3f40;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+body.locked {
+    overflow: hidden;
+    height: 100vh;
+}
+
+h1, h2, h3, .and, .arabic {
+    font-family: 'Playfair Display', serif;
+    color: #8c5255;
+}
+
+.opening-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #fff0f2 0%, #ffffff 100%);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: opacity 1s ease, transform 1s ease, visibility 1s;
+}
+
+.opening-page.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%);
+}
+
+.opening-content {
+    padding: 20px;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.opening-content span {
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #bfa3a5;
+    font-weight: 500;
+}
+
+.opening-content h1 {
+    font-size: 3.5rem;
+    margin: 15px 0;
+    font-weight: 400;
+}
+
+.opening-content p {
+    font-size: 1.1rem;
+    color: #736264;
+    margin-top: 40px;
+}
+
+.opening-content h2 {
+    font-size: 2.2rem;
+    margin: 10px 0 30px 0;
+    font-weight: 400;
+}
+
+.open-btn {
+    background-color: #8c5255;
+    color: #ffffff;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(140, 82, 85, 0.2);
+}
+
+.open-btn:hover {
+    background-color: #734346;
+}
+
+.open-btn:active {
+    transform: scale(0.95);
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #fff0f2 0%, #ffffff 100%);
+    padding: 20px;
+}
+
+.hero span {
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #bfa3a5;
+    font-weight: 500;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin: 20px 0;
+    font-weight: 400;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: #8c5255;
+}
+
+.verse {
+    background-color: #ffffff;
+    padding: 60px 20px;
+}
+
+.verse-container {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.arabic {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.translation {
+    font-size: 1rem;
+    font-style: italic;
+    color: #736264;
+    margin-bottom: 10px;
+}
+
+.surah {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #8c5255;
+}
+
+section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 2.3rem;
+    margin-bottom: 50px;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 1px;
+    background-color: #8c5255;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.couple-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.person {
+    flex: 1;
+    width: 100%;
+    background: #ffffff;
+    padding: 40px 20px;
+    border-radius: 20px;
+    border: 1px solid #f7e6e7;
+    box-shadow: 0 4px 15px rgba(140, 82, 85, 0.03);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.person:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(140, 82, 85, 0.08);
+}
+
+.person h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.person p {
+    color: #736264;
+    font-size: 0.95rem;
+}
+
+.and {
+    font-size: 3rem;
+    line-height: 1;
+    font-style: italic;
+}
+
+.events {
+    background-color: #fff5f6;
+}
+
+.event-card {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto 30px auto;
+    border: 1px solid #f7e6e7;
+    box-shadow: 0 4px 15px rgba(140, 82, 85, 0.03);
+    transition: transform 0.4s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+}
+
+.event-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.event-card .date, .event-card .time {
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #4a3f40;
+}
+
+.event-card .location {
+    font-weight: 600;
+    margin-top: 20px;
+    color: #8c5255;
+}
+
+.event-card .address {
+    font-size: 0.9rem;
+    color: #736264;
+    margin-top: 5px;
+}
+
+.gift {
+    background-color: #ffffff;
+}
+
+.bank-card {
+    background: #fffbfc;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto 20px auto;
+    border: 1px solid #f7e6e7;
+    transition: transform 0.4s ease;
+}
+
+.bank-card:hover {
+    transform: translateY(-5px);
+}
+
+.bank-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.bank-card p {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #4a3f40;
+}
+
+.copy-btn {
+    background-color: #8c5255;
+    color: #ffffff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.copy-btn:hover {
+    background-color: #734346;
+}
+
+.copy-btn:active {
+    transform: scale(0.98);
+}
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (min-width: 768px) {
+    .couple-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .copy-btn {
+        width: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .hero h1, .opening-content h1 {
+        font-size: 2.3rem;
+    }
+
+    .hero span, .opening-content span {
+        font-size: 1rem;
+    }
+    
+    .opening-content h2 {
+        font-size: 1.8rem;
+    }
+
+    section {
+        padding: 60px 15px;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+    }
+
+    .arabic {
+        font-size: 1.7rem;
+    }
+
+    .person h3 {
+        font-size: 1.4rem;
+    }
+
+    .event-card, .bank-card {
+        padding: 30px 20px;
+    }
+}

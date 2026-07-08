@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Invitation - Wardah & Ikhwan</title>
+<link rel="stylesheet" href="Style/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="locked">
+
+    <div id="opening-page" class="opening-page">
+        <div class="opening-content">
+            <span>Walimatul 'Ursy</span>
+            <h1>Wardah & Ikhwan</h1>
+            <p>Kepada Yth. Bapak/Ibu/Saudara/i</p>
+            <h2 id="guest-name">Tamu Undangan</h2>
+            <button id="open-btn" class="open-btn">Buka Undangan</button>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <header class="hero fade-up">
+            <span>Walimatul 'Ursy</span>
+            <h1>Wardah & Ikhwan</h1>
+            <p>16 Agustus 2026</p>
+        </header>
+
+        <section class="verse fade-up">
+            <div class="verse-container">
+                <p class="arabic">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+                <p class="translation">Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.</p>
+                <p class="surah">Ar-Rum: 21</p>
+            </div>
+        </section>
+
+        <section class="couple">
+            <h2 class="fade-up">Mempelai</h2>
+            <div class="couple-container">
+                <div class="person fade-up">
+                    <h3>Wardah Karimah, S.Pd</h3>
+                    <p>Putri Ketiga</p>
+                    <p>Bapak Karim & Ibu Iyoh Khoeriyah</p>
+                </div>
+                <span class="and fade-up">&</span>
+                <div class="person fade-up">
+                    <h3>Ikhwan Maulana, S.Pd</h3>
+                    <p>Putra Kedua</p>
+                    <p>Bapak Engkos Kosasih & Ibu Mimin Mintarsih</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="events">
+            <h2 class="fade-up">Jadwal Acara</h2>
+            <div class="event-card fade-up">
+                <h3>Akad Nikah</h3>
+                <p class="date">Ahad, 16 Agustus 2026</p>
+                <p class="time">08.00 - Selesai</p>
+                <p class="location">Lesehan Nuparanti</p>
+                <p class="address">Jln KH Abdul Hamid km 07 Kp Pasarean RT 01/RW 01<br>Desa Pasarean, Kec. Pamijahan, Kab. Bogor</p>
+            </div>
+            <div class="event-card fade-up">
+                <h3>Resepsi</h3>
+                <p class="date">Ahad, 16 Agustus 2026</p>
+                <p class="time">10.00 - Selesai</p>
+                <p class="location">Lesehan Nuparanti</p>
+                <p class="address">Jln KH Abdul Hamid km 07 Kp Pasarean RT 01/RW 01<br>Desa Pasarean, Kec. Pamijahan, Kab. Bogor</p>
+            </div>
+        </section>
+
+        <section class="gift">
+            <h2 class="fade-up">Wedding Gift</h2>
+            <div class="bank-card fade-up">
+                <h3>Bank BSI</h3>
+                <p id="bsi-ikhwan">7239412337</p>
+                <p>a.n Ikhwan Maulana</p>
+                <button class="copy-btn" onclick="copyText('bsi-ikhwan')">Salin Rekening</button>
+            </div>
+            <div class="bank-card fade-up">
+                <h3>Bank BSI</h3>
+                <p id="bsi-wardah">7316230827</p>
+                <p>a.n Wardah Karimah</p>
+                <button class="copy-btn" onclick="copyText('bsi-wardah')">Salin Rekening</button>
+            </div>
+            <div class="bank-card fade-up">
+                <h3>DANA</h3>
+                <p id="dana-wardah">085716620665</p>
+                <p>a.n Wardah Karimah</p>
+                <button class="copy-btn" onclick="copyText('dana-wardah')">Salin Nomor</button>
+            </div>
+        </section>
+    </main>
+    
+    <script src="Script/script.js"></script>
+</body>
+</html>
