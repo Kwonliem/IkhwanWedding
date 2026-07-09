@@ -504,6 +504,25 @@ section h2::after {
     }
 }
 
+.guest-input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 20px 0;
+    border: 1px solid #e1d3d4;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    color: #4a3f40;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: border-color 0.3s ease;
+}
+
+.guest-input:focus {
+    outline: none;
+    border-color: #8c5255;
+}
+
 
 .rsvp {
     background-color: rgba(255, 245, 246, 0.8);

@@ -1,6 +1,19 @@
+const firebaseConfig = {
+    apiKey: "AIzaSyDddh8Ua-4CRt0DlEyx9ps65YlE2n2JCuY",
+    authDomain: "wedding-wardah-ikhwan.firebaseapp.com",
+    projectId: "wedding-wardah-ikhwan",
+    storageBucket: "wedding-wardah-ikhwan.firebasestorage.app",
+    messagingSenderId: "399328237574",
+    appId: "1:399328237574:web:6e839158d29f80dacb8b87"
+};
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+const messagesRef = database.ref('weddingMessages');
+
 const urlParams = new URLSearchParams(window.location.search);
 const guestName = urlParams.get('to') || 'Tamu Undangan';
 document.getElementById('guest-name').innerText = guestName;
+document.getElementById('nama').value = guestName;
 
 document.getElementById('open-btn').addEventListener('click', () => {
     document.getElementById('opening-page').classList.add('hidden');
@@ -41,54 +54,60 @@ function showToast(message) {
     toast.innerText = message;
     toast.classList.add('show');
     
-    
     setTimeout(() => {
         toast.classList.remove('show');
     }, 3000);
 }
 
+const messageList = document.getElementById('messages-list');
+
+messagesRef.on('value', (snapshot) => {
+    messageList.innerHTML = '';
+    const data = snapshot.val();
+    if (data) {
+        const keys = Object.keys(data);
+        keys.reverse().forEach(key => {
+            const msg = data[key];
+            const newMessage = document.createElement('div');
+            newMessage.classList.add('message-item');
+            
+            let badgeStyle = msg.kehadiran === 'Hadir' ? 'background-color: #e6f4ea; color: #1e8e3e;' : 'background-color: #fce8e6; color: #d93025;';
+            
+            newMessage.innerHTML = `
+                <div class="message-header">
+                    <span class="message-name">${msg.nama}</span>
+                    <span class="message-badge" style="${badgeStyle}">${msg.kehadiran}</span>
+                </div>
+                <div class="message-body">
+                    "${msg.ucapan}"
+                </div>
+            `;
+            messageList.appendChild(newMessage);
+        });
+    }
+});
 
 document.getElementById('rsvp-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    
     const nama = document.getElementById('nama').value;
     const kehadiran = document.getElementById('kehadiran').value;
     const ucapan = document.getElementById('ucapan').value;
 
-    
-    if(nama && kehadiran && ucapan) {
+    if (nama && kehadiran && ucapan) {
+        const newMessageObj = {
+            nama: nama,
+            kehadiran: kehadiran,
+            ucapan: ucapan,
+            timestamp: Date.now()
+        };
         
-        const messageList = document.getElementById('messages-list');
-        const newMessage = document.createElement('div');
-        newMessage.classList.add('message-item');
-
-        
-        let badgeStyle = '';
-        if(kehadiran === 'Hadir') {
-            badgeStyle = 'background-color: #e6f4ea; color: #1e8e3e;'; 
-        } else {
-            badgeStyle = 'background-color: #fce8e6; color: #d93025;'; 
-        }
-
-        
-        newMessage.innerHTML = `
-            <div class="message-header">
-                <span class="message-name">${nama}</span>
-                <span class="message-badge" style="${badgeStyle}">${kehadiran}</span>
-            </div>
-            <div class="message-body">
-                "${ucapan}"
-            </div>
-        `;
-
-        
-        messageList.prepend(newMessage);
-
-        
-        showToast("Terima kasih atas doa dan ucapannya!");
-
-        
-        document.getElementById('rsvp-form').reset();
+        messagesRef.push(newMessageObj).then(() => {
+            showToast("Terima kasih atas doa dan ucapannya!");
+            document.getElementById('ucapan').value = '';
+            document.getElementById('kehadiran').value = '';
+        }).catch((error) => {
+            showToast("Gagal mengirim ucapan!");
+        });
     }
 });

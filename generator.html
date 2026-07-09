@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Link Generator - Wardah & Ikhwan</title>
+<link rel="stylesheet" href="Style/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+    body { padding: 50px 20px; overflow-y: auto; height: auto; }
+    .generator-card { max-width: 600px; margin: 0 auto; background: #ffffff; padding: 40px; border-radius: 20px; box-shadow: 0 4px 15px rgba(140, 82, 85, 0.1); border: 1px solid rgba(247, 230, 231, 0.8); }
+    .generator-card h2 { text-align: center; margin-bottom: 30px; }
+    .form-group input { margin-bottom: 20px; }
+    .result-box { margin-top: 30px; padding: 20px; background: #fff0f2; border-radius: 10px; display: none; }
+    .result-box textarea { width: 100%; height: 200px; padding: 15px; border: 1px solid #e1d3d4; border-radius: 10px; font-family: 'Poppins', sans-serif; resize: none; margin-bottom: 15px; }
+</style>
+</head>
+<body>
+
+    <div class="generator-card">
+        <h2>Link Generator Undangan</h2>
+        
+        <div class="form-group">
+            <label for="domainUrl">URL Website Anda</label>
+            <input type="text" id="domainUrl" value="https://domainanda.com/" placeholder="Contoh: https://domainanda.com/">
+        </div>
+
+        <div class="form-group">
+            <label for="tamuInput">Nama Tamu</label>
+            <input type="text" id="tamuInput" placeholder="Contoh: Bapak Budi & Keluarga">
+        </div>
+
+        <button class="submit-btn" onclick="generateLink()">Buat Link & Pesan</button>
+
+        <div id="resultBox" class="result-box">
+            <label>Pesan WhatsApp:</label>
+            <textarea id="pesanWa" readonly></textarea>
+            <button class="submit-btn" onclick="copyMessage()">Salin Pesan</button>
+        </div>
+    </div>
+
+    <div id="custom-toast" class="custom-toast"></div>
+
+    <script>
+        function generateLink() {
+            const domain = document.getElementById('domainUrl').value.trim();
+            const namaTamu = document.getElementById('tamuInput').value.trim();
+            
+            if (!namaTamu || !domain) {
+                showToast("URL dan Nama Tamu tidak boleh kosong!");
+                return;
+            }
+
+            const paramTamu = encodeURIComponent(namaTamu);
+            const linkUndangan = `${domain}?to=${paramTamu}`;
+
+            const pesan = `Bismillahirahmanirrahim\nAssalamu'alaikum Warahmatullahi Wabarakatuh\n\nKepada Yth. ${namaTamu},\n\nTanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan memberikan doa restu pada acara pernikahan kami:\n\nWardah & Ikhwan\n\nBerikut link undangan kami untuk info lengkap mengenai acara:\n${linkUndangan}\n\nMerupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir di acara pernikahan kami.\n\nWassalamu'alaikum Warahmatullahi Wabarakatuh.`;
+
+            document.getElementById('pesanWa').value = pesan;
+            document.getElementById('resultBox').style.display = 'block';
+        }
+
+        function copyMessage() {
+            const textArea = document.getElementById('pesanWa');
+            textArea.select();
+            document.execCommand('copy');
+            showToast("Pesan WhatsApp berhasil disalin!");
+            document.getElementById('tamuInput').value = '';
+            document.getElementById('tamuInput').focus();
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('custom-toast');
+            toast.innerText = message;
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 3000);
+        }
+    </script>
+</body>
+</html>
