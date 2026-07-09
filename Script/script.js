@@ -6,6 +6,8 @@ const firebaseConfig = {
     messagingSenderId: "399328237574",
     appId: "1:399328237574:web:6e839158d29f80dacb8b87"
 };
+
+
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 const messagesRef = database.ref('weddingMessages');
@@ -15,10 +17,33 @@ const guestName = urlParams.get('to') || 'Tamu Undangan';
 document.getElementById('guest-name').innerText = guestName;
 document.getElementById('nama').value = guestName;
 
+const bgMusic = document.getElementById('bg-music');
+const musicToggle = document.getElementById('music-toggle');
+let isPlaying = false;
+
 document.getElementById('open-btn').addEventListener('click', () => {
     document.getElementById('opening-page').classList.add('hidden');
     document.body.classList.remove('locked');
     window.scrollTo(0, 0);
+
+    bgMusic.play().then(() => {
+        isPlaying = true;
+        musicToggle.classList.add('visible');
+        musicToggle.classList.add('spin-animation');
+    }).catch((e) => {
+        musicToggle.classList.add('visible');
+    });
+});
+
+musicToggle.addEventListener('click', () => {
+    if (isPlaying) {
+        bgMusic.pause();
+        musicToggle.classList.remove('spin-animation');
+    } else {
+        bgMusic.play();
+        musicToggle.classList.add('spin-animation');
+    }
+    isPlaying = !isPlaying;
 });
 
 const observerOptions = {

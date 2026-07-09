@@ -669,3 +669,51 @@ section h2::after {
         padding: 25px 20px;
     }
 }
+
+
+.music-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #8c5255;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 9998;
+    box-shadow: 0 4px 15px rgba(140, 82, 85, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.music-toggle.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.music-toggle:hover {
+    background-color: #734346;
+}
+
+.spin-animation {
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 767px) {
+    .music-toggle {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+}
