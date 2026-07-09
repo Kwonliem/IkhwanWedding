@@ -10,7 +10,11 @@
 <body class="locked">
 
     <div id="opening-page" class="opening-page">
+        <img src="Images/laki-laki.png" alt="Mempelai Pria" class="side-img left-img">
+        <img src="Images/perempuan.png" alt="Mempelai Wanita" class="side-img right-img">
+        
         <div class="opening-content">
+            <h2 class="arabic-salam">السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</h2>
             <span>Walimatul 'Ursy</span>
             <h1>Wardah & Ikhwan</h1>
             <p>Kepada Yth. Bapak/Ibu/Saudara/i</p>
@@ -58,14 +62,24 @@
                 <p class="date">Ahad, 16 Agustus 2026</p>
                 <p class="time">08.00 - Selesai</p>
                 <p class="location">Lesehan Nuparanti</p>
-                <p class="address">Jln KH Abdul Hamid km 07 Kp Pasarean RT 01/RW 01<br>Desa Pasarean, Kec. Pamijahan, Kab. Bogor</p>
+                <div class="map-wrapper">
+                    <iframe src="https://maps.google.com/maps?q=Lesehan%20Nuparanti,%20Pamijahan,%20Bogor&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <a href="https://www.google.com/maps/search/?api=1&query=Lesehan+Nuparanti+Pamijahan+Bogor" target="_blank" class="address-link">
+                    Jln KH Abdul Hamid km 07 Kp Pasarean RT 01/RW 01<br>Desa Pasarean, Kec. Pamijahan, Kab. Bogor
+                </a>
             </div>
             <div class="event-card fade-up">
                 <h3>Resepsi</h3>
                 <p class="date">Ahad, 16 Agustus 2026</p>
                 <p class="time">10.00 - Selesai</p>
                 <p class="location">Lesehan Nuparanti</p>
-                <p class="address">Jln KH Abdul Hamid km 07 Kp Pasarean RT 01/RW 01<br>Desa Pasarean, Kec. Pamijahan, Kab. Bogor</p>
+                <div class="map-wrapper">
+                    <iframe src="https://maps.google.com/maps?q=Lesehan%20Nuparanti,%20Pamijahan,%20Bogor&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <a href="https://www.google.com/maps/search/?api=1&query=Lesehan+Nuparanti+Pamijahan+Bogor" target="_blank" class="address-link">
+                    Jln KH Abdul Hamid km 07 Kp Pasarean RT 01/RW 01<br>Desa Pasarean, Kec. Pamijahan, Kab. Bogor
+                </a>
             </div>
         </section>
 
@@ -90,8 +104,41 @@
                 <button class="copy-btn" onclick="copyText('dana-wardah')">Salin Nomor</button>
             </div>
         </section>
+
+        <section class="rsvp fade-up">
+            <h2>RSVP & Ucapan</h2>
+            <div class="rsvp-container">
+                <form id="rsvp-form" class="rsvp-form">
+                    <div class="form-group">
+                        <label for="nama">Nama</label>
+                        <input type="text" id="nama" name="nama" required placeholder="Masukkan nama Anda">
+                    </div>
+                    <div class="form-group">
+                        <label for="kehadiran">Kehadiran</label>
+                        <select id="kehadiran" name="kehadiran" required>
+                            <option value="" disabled selected>Konfirmasi Kehadiran</option>
+                            <option value="Hadir">Akan Hadir</option>
+                            <option value="Tidak Hadir">Maaf, Tidak Bisa Hadir</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ucapan">Ucapan & Doa</label>
+                        <textarea id="ucapan" name="ucapan" rows="4" required placeholder="Tuliskan ucapan dan doa untuk kedua mempelai"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Kirim Ucapan</button>
+                </form>
+
+                <div class="messages-container">
+                    <h3>Ucapan dari Sahabat & Keluarga</h3>
+                    <div id="messages-list" class="messages-list">
+                        </div>
+                </div>
+            </div>
+        </section>
     </main>
     
+    <div id="custom-toast" class="custom-toast"></div>
+
     <script src="Script/script.js"></script>
 </body>
 </html>

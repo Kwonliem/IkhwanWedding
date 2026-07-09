@@ -7,6 +7,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #fffbfc;
+    background-image: url("https://www.transparenttextures.com/patterns/arabesque.png");
     color: #4a3f40;
     line-height: 1.6;
     overflow-x: hidden;
@@ -28,7 +29,7 @@ h1, h2, h3, .and, .arabic {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #fff0f2 0%, #ffffff 100%);
+    background: url("https://www.transparenttextures.com/patterns/arabesque.png"), linear-gradient(135deg, #fff0f2 0%, #ffffff 100%);
     z-index: 9999;
     display: flex;
     justify-content: center;
@@ -43,35 +44,69 @@ h1, h2, h3, .and, .arabic {
     transform: translateY(-100%);
 }
 
+.side-img {
+    position: absolute;
+    bottom: 0;
+    height: 65vh;
+    max-width: 40vw;
+    object-fit: contain;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.left-img {
+    left: 5%;
+    animation: slideInLeft 1.5s ease-out;
+}
+
+.right-img {
+    right: 5%;
+    animation: slideInRight 1.5s ease-out;
+}
+
 .opening-content {
-    padding: 20px;
+    padding: 40px 30px;
+    background: transparent;
     animation: fadeIn 1.5s ease-out;
+    max-width: 90%;
+    position: relative;
+    z-index: 10;
+}
+
+.arabic-salam {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 .opening-content span {
     font-size: 1.2rem;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: #bfa3a5;
-    font-weight: 500;
+    color: #8c5255;
+    font-weight: 600;
 }
 
 .opening-content h1 {
     font-size: 3.5rem;
     margin: 15px 0;
     font-weight: 400;
+    color: #6a3a3d;
 }
 
 .opening-content p {
     font-size: 1.1rem;
-    color: #736264;
-    margin-top: 40px;
+    color: #6a3a3d;
+    margin-top: 20px;
+    font-weight: 500;
 }
 
 .opening-content h2 {
     font-size: 2.2rem;
     margin: 10px 0 30px 0;
     font-weight: 400;
+    color: #8c5255;
 }
 
 .open-btn {
@@ -89,7 +124,7 @@ h1, h2, h3, .and, .arabic {
 }
 
 .open-btn:hover {
-    background-color: #734346;
+    background-color: #6a3a3d;
 }
 
 .open-btn:active {
@@ -103,7 +138,7 @@ h1, h2, h3, .and, .arabic {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: linear-gradient(135deg, #fff0f2 0%, #ffffff 100%);
+    background: linear-gradient(135deg, rgba(255, 240, 242, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%), url("https://www.transparenttextures.com/patterns/arabesque.png");
     padding: 20px;
 }
 
@@ -129,7 +164,7 @@ h1, h2, h3, .and, .arabic {
 }
 
 .verse {
-    background-color: #ffffff;
+    background-color: transparent;
     padding: 60px 20px;
 }
 
@@ -137,6 +172,11 @@ h1, h2, h3, .and, .arabic {
     max-width: 700px;
     margin: 0 auto;
     text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(140, 82, 85, 0.05);
+    border: 1px solid rgba(247, 230, 231, 0.8);
 }
 
 .arabic {
@@ -195,17 +235,17 @@ section h2::after {
 .person {
     flex: 1;
     width: 100%;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.95);
     padding: 40px 20px;
     border-radius: 20px;
-    border: 1px solid #f7e6e7;
-    box-shadow: 0 4px 15px rgba(140, 82, 85, 0.03);
+    border: 1px solid rgba(247, 230, 231, 0.8);
+    box-shadow: 0 4px 15px rgba(140, 82, 85, 0.05);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .person:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(140, 82, 85, 0.08);
+    box-shadow: 0 8px 25px rgba(140, 82, 85, 0.1);
 }
 
 .person h3 {
@@ -226,18 +266,18 @@ section h2::after {
 }
 
 .events {
-    background-color: #fff5f6;
+    background-color: rgba(255, 245, 246, 0.8);
 }
 
 .event-card {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.95);
     padding: 40px 30px;
     border-radius: 20px;
     max-width: 500px;
     width: 100%;
     margin: 0 auto 30px auto;
-    border: 1px solid #f7e6e7;
-    box-shadow: 0 4px 15px rgba(140, 82, 85, 0.03);
+    border: 1px solid rgba(247, 230, 231, 0.8);
+    box-shadow: 0 4px 15px rgba(140, 82, 85, 0.05);
     transition: transform 0.4s ease;
 }
 
@@ -263,24 +303,51 @@ section h2::after {
     color: #8c5255;
 }
 
-.event-card .address {
+.map-wrapper {
+    width: 100%;
+    height: 250px;
+    margin: 15px 0;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #f7e6e7;
+}
+
+.map-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.address-link {
+    display: inline-block;
     font-size: 0.9rem;
     color: #736264;
-    margin-top: 5px;
+    margin-top: 10px;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: #fff0f2;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.address-link:hover {
+    background-color: #8c5255;
+    color: #ffffff;
 }
 
 .gift {
-    background-color: #ffffff;
+    background-color: transparent;
 }
 
 .bank-card {
-    background: #fffbfc;
+    background: rgba(255, 251, 252, 0.95);
     padding: 30px;
     border-radius: 20px;
     max-width: 400px;
     width: 100%;
     margin: 0 auto 20px auto;
-    border: 1px solid #f7e6e7;
+    border: 1px solid rgba(247, 230, 231, 0.8);
+    box-shadow: 0 4px 15px rgba(140, 82, 85, 0.05);
     transition: transform 0.4s ease;
 }
 
@@ -323,6 +390,30 @@ section h2::after {
     transform: scale(0.98);
 }
 
+.custom-toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background-color: #8c5255;
+    color: #ffffff;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px rgba(140, 82, 85, 0.3);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+.custom-toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
 .fade-up {
     opacity: 0;
     transform: translateY(40px);
@@ -337,6 +428,16 @@ section h2::after {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
 @media (min-width: 768px) {
@@ -363,6 +464,25 @@ section h2::after {
         font-size: 1.8rem;
     }
 
+    .arabic-salam {
+        font-size: 1.5rem;
+    }
+
+    .side-img {
+        height: 85vh;
+        width: auto;
+        max-width: none;
+        opacity: 1;
+    }
+
+    .left-img {
+        left: -15vw;
+    }
+
+    .right-img {
+        right: -15vw;
+    }
+
     section {
         padding: 60px 15px;
     }
@@ -381,5 +501,152 @@ section h2::after {
 
     .event-card, .bank-card {
         padding: 30px 20px;
+    }
+}
+
+
+.rsvp {
+    background-color: rgba(255, 245, 246, 0.8);
+    padding-bottom: 100px;
+}
+
+.rsvp-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(140, 82, 85, 0.05);
+    border: 1px solid rgba(247, 230, 231, 0.8);
+}
+
+.rsvp-form {
+    text-align: left;
+    margin-bottom: 40px;
+    border-bottom: 1px solid rgba(247, 230, 231, 0.8);
+    padding-bottom: 40px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #8c5255;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e1d3d4;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: #4a3f40;
+    background-color: #fffbfc;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: #8c5255;
+}
+
+.submit-btn {
+    background-color: #8c5255;
+    color: #ffffff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #734346;
+}
+
+.submit-btn:active {
+    transform: scale(0.98);
+}
+
+.messages-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+    color: #8c5255;
+}
+
+.messages-list {
+    max-height: 400px;
+    overflow-y: auto;
+    text-align: left;
+    padding-right: 10px;
+}
+
+
+.messages-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.messages-list::-webkit-scrollbar-track {
+    background: #fff0f2;
+    border-radius: 10px;
+}
+
+.messages-list::-webkit-scrollbar-thumb {
+    background: #bfa3a5;
+    border-radius: 10px;
+}
+
+.message-item {
+    background-color: #fffbfc;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #f7e6e7;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.message-name {
+    font-weight: 600;
+    color: #8c5255;
+}
+
+.message-badge {
+    font-size: 0.8rem;
+    padding: 3px 8px;
+    border-radius: 15px;
+    background-color: #f7e6e7;
+    color: #736264;
+}
+
+.message-body {
+    font-size: 0.95rem;
+    color: #4a3f40;
+    line-height: 1.5;
+}
+
+@media (max-width: 767px) {
+    .rsvp-container {
+        padding: 25px 20px;
     }
 }

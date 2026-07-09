@@ -30,8 +30,65 @@ document.querySelectorAll('.fade-up').forEach(element => {
 function copyText(elementId) {
     const textToCopy = document.getElementById(elementId).innerText;
     navigator.clipboard.writeText(textToCopy).then(() => {
-        alert("Berhasil disalin: " + textToCopy);
+        showToast("Berhasil disalin: " + textToCopy);
     }).catch(err => {
-        alert("Gagal menyalin: " + err);
+        showToast("Gagal menyalin!");
     });
 }
+
+function showToast(message) {
+    const toast = document.getElementById('custom-toast');
+    toast.innerText = message;
+    toast.classList.add('show');
+    
+    
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
+
+
+document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    
+    const nama = document.getElementById('nama').value;
+    const kehadiran = document.getElementById('kehadiran').value;
+    const ucapan = document.getElementById('ucapan').value;
+
+    
+    if(nama && kehadiran && ucapan) {
+        
+        const messageList = document.getElementById('messages-list');
+        const newMessage = document.createElement('div');
+        newMessage.classList.add('message-item');
+
+        
+        let badgeStyle = '';
+        if(kehadiran === 'Hadir') {
+            badgeStyle = 'background-color: #e6f4ea; color: #1e8e3e;'; 
+        } else {
+            badgeStyle = 'background-color: #fce8e6; color: #d93025;'; 
+        }
+
+        
+        newMessage.innerHTML = `
+            <div class="message-header">
+                <span class="message-name">${nama}</span>
+                <span class="message-badge" style="${badgeStyle}">${kehadiran}</span>
+            </div>
+            <div class="message-body">
+                "${ucapan}"
+            </div>
+        `;
+
+        
+        messageList.prepend(newMessage);
+
+        
+        showToast("Terima kasih atas doa dan ucapannya!");
+
+        
+        document.getElementById('rsvp-form').reset();
+    }
+});
